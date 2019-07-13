@@ -7,7 +7,7 @@
 if [ $# != 0 ]
 then 
     echo "usage: legit-init" 1>&2
-    exit 1
+    exit 0
 elif test -d ".legit"
 then
     echo "legit-init: error: .legit already exists" 1>&2
@@ -15,9 +15,9 @@ then
 else 
     mkdir ".legit"
     # go into the .legit directory and make the .git directory
-    cd ".legit"
-    mkdir ".git"
-    cd ".git"
-    mkdir "index"
+    mkdir ".legit/.git"
+    mkdir ".legit/.git/index"
+    mkdir ".legit/.git/commits"
+    touch "./legit/.git/commit_log.txt"
     echo "Initialized empty legit repository in .legit"
 fi
