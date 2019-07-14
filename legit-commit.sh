@@ -71,23 +71,24 @@ else
             # copy all files from the index into the new commit folder
             for file in .legit/.git/index/*
             do
-                file=`basename $file`
-                cp $file ".legit/.git/commits/.commit.$new_commit_number/$file"
+                base_file=`basename "$file"`
+                cp "$file" ".legit/.git/commits/.commit.$new_commit_number/$base_file"
             done
         fi
 
         # log the newest commit
         echo "Committed as commit $new_commit_number"
-        echo "$new_commit_number $message" >> ".legit/.git/commit_log.txt"
+        # prepend from https://superuser.com/questions/246837/how-do-i-add-text-to-the-beginning-of-a-file-in-bash
+        echo "$new_commit_number $message" | cat - ".legit/.git/commit_log.txt" > temp && mv temp ".legit/.git/commit_log.txt"
 
     # the first commit 
     else 
         mkdir ".legit/.git/commits/.commit.0"
-        for file_full in ".legit/.git/index/*"
+        for file in .legit/.git/index/*
         do
             # take only the file name
-            file=`echo $file_full | cut -d "/" -f4`
-            cp $file ".legit/.git/commits/.commit.0/$file"
+            base_file=`basename "$file"`
+            cp "$file" ".legit/.git/commits/.commit.0/$base_file"
         done
         # log the first commit 
         echo "Committed as commit 0"

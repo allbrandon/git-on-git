@@ -1,5 +1,6 @@
 #!/usr/bin/env dash
 
+commit_num=`echo $1|cut -d':' -f1`
 # if repo doesnt exist 
 if ! test -d ".legit"
 then
@@ -16,15 +17,20 @@ then
     echo "usage: legit-show <commit>:<filename>" 1>&2
     exit 0
 # checking if its a valid commit
+# 
 # look at the logs of commits, get the first col and check if the supplied commit number exists in it
-elif ! test `cat .legit/.git/commit_log.txt | cut -d ' ' -f1 | egrep "$(echo $1|cut -d':' -f1)"`
-# check the commit log get the first col. if egrep the given number and its not there then it doesnt exist
+# only check this if commit-num has a value
+elif [ ! -z $commit_num ]
 then 
-    commit_num=`echo $1|cut -d':' -f1`
-    echo "legit-show: error: unknown commit '$commit_num'" 1>&2
-    exit 1
+    if [ ! `cat .legit/.git/commit_log.txt | cut -d ' ' -f1 | egrep $commit_num` ]
+    # check the commit log get the first col. if egrep the given number and its not there then it doesnt exist
+    then 
+        echo "legit-show: error: unknown commit '$commit_num'" 1>&2
+        exit 1
+    fi 
+fi
 # invalid filename 
-elif ! test `echo $1 | cut -d ":" -f2 | egrep "^[a-zA-Z0-9][a-zA-Z0-9.-_]*"`
+if ! test `echo $1 | cut -d ":" -f2 | egrep "^[a-zA-Z0-9][a-zA-Z0-9.-_]*"`
 then 
     file=`echo $1 | cut -d ":" -f2-`
     echo "legit-show: error: invalid filename '$file'" 1>&2
