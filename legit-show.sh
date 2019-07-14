@@ -67,7 +67,7 @@ else
         cat .legit/.git/commits/.commit.$commit_num/$file
     fi
 fi
-
+exit 0
 #repo -> no commit -> usage -> no colon : (invalid object) -> unknown commit -> not found in commit
 
 # invalid filename after checking the commit number

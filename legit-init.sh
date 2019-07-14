@@ -20,3 +20,4 @@ else
     mkdir ".legit/.git/commits"
     echo "Initialized empty legit repository in .legit"
 fi
+exit 0

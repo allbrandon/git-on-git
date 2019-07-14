@@ -17,3 +17,4 @@ then
 else 
     cat .legit/.git/commit_log.txt
 fi
+exit 0

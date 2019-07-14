@@ -23,8 +23,14 @@ do
     # if it doesnt exist legit-add: error: can not open '$file'
     elif ! test -e "$file"
     then 
-        echo "legit-add: error: can not open '$file'" 1>&2
-        exit 1
+        # check if its been manually deleted 
+        if test -f .legit/.git/index/$file 
+        then 
+            rm .legit/.git/index/$file 
+        else
+            echo "legit-add: error: can not open '$file'" 1>&2
+            exit 1
+        fi
     # if it exists make sure its a file 
     elif ! test -f "$file"
     then 
@@ -37,5 +43,21 @@ done
 for file in $@ 
 do
 # Assuming that the index dir is there (from init) and not manipulated with
-    cp $file ./.legit/.git/index/$file
+    # check again to see if the files here and not removed 
+    if test -f $file
+    then
+        # everytime we get a new file_name, append to files_history.txt, to use for legit-status
+        if [ -f .legit/.git/files_history.txt ]
+        then
+            file_name=`cat .legit/.git/files_history.txt | egrep $file`
+        fi
+        # if egrep gets nothing then its a new file name
+        if [ ! "$file_name" ]
+        then
+            echo $file >> .legit/.git/files_history.txt
+        fi
+        cp $file .legit/.git/index/$file
+    fi
 done
+exit 0
+

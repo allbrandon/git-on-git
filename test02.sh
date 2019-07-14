@@ -1,9 +1,12 @@
 #!/usr/bin/env dash
 echo "----- Running test02.sh ------"
 
-echo "Running Test #: legit-commit normal case"
-
 echo "Running Test #1: legit-commit with no existing repo"
+
+echo "Running Test #: legit-commit first commit 0"
+
+echo "Running Test #: legit-commit second commit 1 - normal new file"
+echo "Running Test #: legit-commit: same file name as prev but modified file"
 
 echo "Running Test #: legit-commit with nothing git-added"
 
@@ -11,6 +14,9 @@ echo "Running Test #: legit-commit with nothing git-added"
 echo "Running Test #: legit-commit but files same as prev commit?"
 
 echo "Running Test #: legit-commit wrong usage, i.e. just ./legit-commit.sh or ./legit-commit lkm or ./legit-commit -m lda"
+
+
+
 # not 3 args -> fail
 
 # 2041 legit-commit -m "klm lfw" -> see how this works (how many args, does the msg contain " " )
