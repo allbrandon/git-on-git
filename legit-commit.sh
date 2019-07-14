@@ -1,12 +1,11 @@
 #!/usr/bin/env dash
 
 # if repo doesnt exist 
-# needs to be legit-commit -m kfmwaf
 flag="$1"
 message="$2"
 if ! test -d ".legit"
 then
-    echo "legit-add: error: no .legit directory containing legit repository exists" 1>&2
+    echo "legit-commit: error: no .legit directory containing legit repository exists" 1>&2
     exit 1
 # if theres not the right number of args (2) or the first arg is not the -m flag
 elif [ $# -ne 2 ] || [ $flag != "-m" ]
@@ -47,7 +46,6 @@ else
             file=`basename $file`
             # the current file in index exists in latest commit so we need to check
             # if its actually a new version
-            echo "testing .legit/.git/commits/.commit.$commit_number/$file"
             if test -f ".legit/.git/commits/.commit.$commit_number/$file"
             then 
                 # if its the same (no output with diff) then nothing to commit
@@ -80,7 +78,7 @@ else
 
         # log the newest commit
         echo "Committed as commit $new_commit_number"
-        echo "$new_commit_number $message\n" >> ".legit/.git/commit_log.txt"
+        echo "$new_commit_number $message" >> ".legit/.git/commit_log.txt"
 
     # the first commit 
     else 
@@ -93,6 +91,6 @@ else
         done
         # log the first commit 
         echo "Committed as commit 0"
-        echo "0 $message\n" >> ".legit/.git/commit_log.txt"
+        echo "0 $message" >> ".legit/.git/commit_log.txt"
     fi
 fi

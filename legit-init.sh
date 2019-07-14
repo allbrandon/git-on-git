@@ -18,6 +18,5 @@ else
     mkdir ".legit/.git"
     mkdir ".legit/.git/index"
     mkdir ".legit/.git/commits"
-    touch "./legit/.git/commit_log.txt"
     echo "Initialized empty legit repository in .legit"
 fi
