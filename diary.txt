@@ -1,0 +1,40 @@
+# Assignment 1 - Diary
+
+| Date | Start | Stop | Activity | Comments |
+| ------ | :----: |  ----- | -------- | ----|
+|4/07/19| 6:00 PM| 6:30 PM| setup | Setup the github repository
+|4/07/19| 6:30PM | 8:00PM| reading spec| re-read spec and requirements properly and played around with reference implementation and understood it better|
+|4/07/19|8:00PM|8:30PM| code| implemented legit-init|
+|4/07/19|8:30PM|9:00PM | read| Find notes taken below|
+|8/07/19|7:30PM|11:00PM |test scripts| wrote test for legit-init, legit-add, legit-commit -m, legit log, legit-show,|
+9/07/19| 9:50AM| 10:20AM|code| fixed up legit-init|
+9/07/19| 12:15PM| 1:00PM| test scripts| wrote tests for legit-add|
+10/07/19| 8:00AM|9:00AM|test scripts |wrote tests for legit-add|
+10/07/19|10:00AM|11:00PM|code|wrote implementation for legit-add|
+|12/07/19|5:20PM| 7:00PM|code| wrote implementation for legit-add|
+|13/07/19|7:00PM|10:00PM | code|wrote implementation for legit-commit|
+14/07/19|1:00AM|1:30AM| code| wrote implementation for legit-log|
+14/07/19|10:00AM|12:00PM|code|wrote implementation for git-show|
+|14/07/19|12:00PM|3:00PM|code|fixed up git-add, git-commit bugs -> subset 0 working on autotests|
+|14/07/19|3:00PM|4:21PM|code| added -a flag for git-commit|
+14-15/07/19|7:22PM|11:00AM|code| wrote implementation for git-rm, git-status
+15/07/19|7:22PM|11:00AM|tests| wrote tests
+
+
+
+
+
+## **Notes about Git**
+[Source](https://hackernoon.com/understanding-git-fcffd87c15a3)
+
+* Git = version control system
+* ```git init``` -> creates a hidden ```.git``` folder and stores all internal tracking data. It's the "central control/monitoring system"
+
+* ```git clone url``` downloads the latest version of git repository from GitHub onto your local computer 
+* remote origin is the place (url) where your files were originally downloaded from
+* ``` git status``` prints basic information about your files 
+* ``` git branch <new-branch-name> ``` it's a checkpoint (more technically a **reference**)
+like doing File > Save As. 
+
+### Important Part
+* ``` git add <files> ``` - stage your changes to prepare for comitting them. 

@@ -16,4 +16,3 @@ echo "Running Test #: legit-commit -m: "
 #2041 legit-commit -a -m a
 
 echo "Running Test #: legit-commit -m: deleted from dir"
-# what if it got deleted from curr dir

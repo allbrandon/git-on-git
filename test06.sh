@@ -37,8 +37,3 @@ echo "Running Test #: legit-rm when currrent directory has diff file"
 echo "Running Test #: legit-rm: specified file updated in index with current directory but not committed"
 # added but not comitted. cross check with the latest commit 
 #legit-rm: error: 'a' has changes staged in the index
-
-
-# what if they give the same file again? -> it should work i.e. 2041 legit-rm aa aa
-# echo " manual"
-# what if you rm manually

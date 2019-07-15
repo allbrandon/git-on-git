@@ -54,9 +54,9 @@ do
         # if egrep gets nothing then its a new file name
         if [ ! "$file_name" ]
         then
-            echo $file >> .legit/.git/files_history.txt
+            echo "$file" >> .legit/.git/files_history.txt
         fi
-        cp $file .legit/.git/index/$file
+        cp "$file" .legit/.git/index/$file
     fi
 done
 exit 0
